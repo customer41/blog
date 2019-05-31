@@ -39,6 +39,7 @@ BasicAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/index/default']],
+            ['label' => 'Статьи', 'url' => ['/articles/all']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

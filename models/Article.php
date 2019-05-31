@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use yii\db\Query;
+
 class Article extends ArticleBase
 {
     public function attributeLabels()
@@ -10,5 +12,10 @@ class Article extends ArticleBase
             'title' => 'Заголовок статьи',
             'body' => 'Статья',
         ];
+    }
+
+    public static function getAllHeaders()
+    {
+        return (new Query)->select(['id', 'title'])->from('articles')->all();
     }
 }

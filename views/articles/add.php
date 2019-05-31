@@ -11,7 +11,7 @@ use \mihaildev\ckeditor\CKEditor;
 
 ?>
 
-<h1>Добавление новой статьи</h1>
+<h2>Добавление новой статьи</h2>
 
 <?php $form = ActiveForm::begin(['method' =>'POST', 'action' => '/articles/add']);
     echo $form->field($article, 'title');

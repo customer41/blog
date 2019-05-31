@@ -24,4 +24,10 @@ class ArticlesController extends BaseController
         $article = Article::findOne(['id' => $id]);
         return $this->render('one', ['article' => $article]);
     }
+
+    public function actionAll()
+    {
+        $headers = Article::getAllHeaders();
+        return $this->render('all', ['headers' => $headers]);
+    }
 }

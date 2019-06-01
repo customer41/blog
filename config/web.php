@@ -25,7 +25,8 @@ $config = [
             'datetimeFormat' => 'dd.MM.yyyy HH:mm',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            //'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\MyUser',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [

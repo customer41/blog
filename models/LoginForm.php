@@ -42,13 +42,13 @@ class LoginForm extends Model
      * @param string $attribute the attribute currently being validated
      * @param array $params the additional name-value pairs given in the rule
      */
-    public function validatePassword($attribute, $params)
+    public function validatePassword($attribute)
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
+                $this->addError($attribute, 'Неверный логин или пароль.');
             }
         }
     }
@@ -72,10 +72,34 @@ class LoginForm extends Model
      */
     public function getUser()
     {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+        if ($this->isSiteController()) {
+            if ($this->_user === false) {
+                $this->_user = User::findByUsername($this->username);
+            }
+        } else {
+            $this->_user = MyUser::findOne(['username' => $this->username]);
         }
-
         return $this->_user;
+    }
+
+    protected function isSiteController()
+    {
+        if (strpos(Yii::$app->request->url, '/site/') === 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public function attributeLabels()
+    {
+        if ($this->isSiteController()) {
+            return parent::attributeLabels();
+        } else {
+            return [
+                'username' => 'Логин',
+                'password' => 'Пароль',
+                'rememberMe' => 'Запомнить меня',
+            ];
+        }
     }
 }

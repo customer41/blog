@@ -34,4 +34,13 @@ class IndexController extends BaseController
         Yii::$app->user->logout();
         return $this->goHome();
     }
+
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
+    }
 }

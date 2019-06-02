@@ -29,7 +29,7 @@ BasicAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Блог Александра Попова',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -39,8 +39,6 @@ BasicAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/index/default']],
-            ['label' => 'Статьи', 'url' => ['/articles/all']],
-            ['label' => 'Администрация', 'url' => ['/admin']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Войти', 'url' => ['/index/login']]
             ) : (

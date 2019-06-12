@@ -13,9 +13,27 @@ class ArticlesController extends BaseController
         if (Yii::$app->request->isPost) {
             $article->load(Yii::$app->request->post());
             $article->save();
-            return $this->redirect('/admin/default/index');
+            return $this->redirect('/admin');
         } else {
             return $this->render('add', ['article' => $article]);
+        }
+    }
+
+    public function actionDelete($id = null)
+    {
+        Article::findOne(['id' => $id])->delete();
+        $this->redirect('/admin');
+    }
+
+    public function actionEdit($id = null)
+    {
+        $article = Article::findOne(['id' => $id]);
+        if (Yii::$app->request->isPost) {
+            $article->load(Yii::$app->request->post());
+            $article->save();
+            return $this->redirect('/admin');
+        } else {
+            return $this->render('edit', ['article' => $article]);
         }
     }
 }

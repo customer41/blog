@@ -10,17 +10,21 @@ use \yii\helpers\Url;
 
 ?>
 
-<section>
-    <div class="panel panel-default panel-primary">
-        <div class="panel-heading">
-            <h1 class="panel-title">Все статьи</h1>
+<?php if (!empty($headers)): ?>
+    <section>
+        <div class="panel panel-default panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title">Все статьи</h1>
+            </div>
+            <div class="panel-body">
+                <?php foreach ($headers as $header):
+                    echo Html::a($header['title'], Url::to(['articles/one', 'id' => $header['id']]))
+                    ?>
+                    <br>
+                <?php endforeach; ?>
+            </div>
         </div>
-        <div class="panel-body">
-            <?php foreach ($headers as $header):
-                echo Html::a($header['title'], Url::to(['articles/one', 'id' => $header['id']]))
-            ?>
-            <br>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
+    </section>
+<?php else: ?>
+    <div class="alert alert-info" role="alert">Пока нет ни одной статьи.</div>
+<?php endif; ?>

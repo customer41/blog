@@ -19,10 +19,11 @@ class ArticlesController extends BaseController
         }
     }
 
-    public function actionDelete($id = null)
+    public function actionDelete()
     {
-        Article::findOne(['id' => $id])->delete();
-        $this->redirect('/admin');
+        if (Yii::$app->request->isAjax) {
+            Article::findOne(['id' => Yii::$app->request->get('id')])->delete();
+        }
     }
 
     public function actionEdit($id = null)
@@ -35,5 +36,11 @@ class ArticlesController extends BaseController
         } else {
             return $this->render('edit', ['article' => $article]);
         }
+    }
+
+    public function actionOne($id = null)
+    {
+        $article = Article::findOne(['id' => $id]);
+        return $this->render('one', ['article' => $article]);
     }
 }

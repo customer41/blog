@@ -9,6 +9,10 @@ use \yii\bootstrap\ActiveForm;
 use \yii\helpers\Html;
 use \mihaildev\ckeditor\CKEditor;
 
+$this->params['breadcrumbs'][] = ['label' => 'Админ-панель', 'url' => '/admin'];
+$this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => '/admin'];
+$this->params['breadcrumbs'][] = 'Новая статья';
+
 ?>
 
 <h2>Добавление новой статьи</h2>

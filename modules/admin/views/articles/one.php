@@ -5,8 +5,9 @@
  * @var $article app\models\Article
  */
 
-$this->params['breadcrumbs'][] = ['label' => 'Все статьи', 'url' => '/articles/all'];
-$this->params['breadcrumbs'][] = 'Статья';
+$this->params['breadcrumbs'][] = ['label' => 'Админ-панель', 'url' => '/admin'];
+$this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => '/admin'];
+$this->params['breadcrumbs'][] = 'Просмотр';
 
 ?>
 

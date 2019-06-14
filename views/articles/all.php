@@ -8,6 +8,8 @@
 use yii\helpers\Html;
 use \yii\helpers\Url;
 
+$this->params['breadcrumbs'][] = 'Все статьи';
+
 ?>
 
 <?php if (!empty($headers)): ?>

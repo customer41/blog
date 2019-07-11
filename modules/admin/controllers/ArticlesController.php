@@ -19,11 +19,10 @@ class ArticlesController extends BaseController
         }
     }
 
-    public function actionDelete()
+    public function actionDelete($id = null)
     {
-        if (Yii::$app->request->isAjax) {
-            Article::findOne(['id' => Yii::$app->request->get('id')])->delete();
-        }
+        Article::findOne(['id' => Yii::$app->request->get('id')])->delete();
+        return $this->redirect('/admin');
     }
 
     public function actionEdit($id = null)

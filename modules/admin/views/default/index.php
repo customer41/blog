@@ -43,7 +43,7 @@ $this->registerJsFile('@web/js/deleteArticle.js', ['depends' => 'yii\web\YiiAsse
                             <td>
                                 <form action="admin/articles/one">
                                     <button type="submit" class="btn btn-info btn-xs">
-                                        <input type="hidden" name="id" id="id" value="<?php echo $header['id']; ?>" />
+                                        <input type="hidden" name="id" value="<?php echo $header['id']; ?>" />
                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Просмотреть
                                     </button>
                                 </form>
@@ -57,7 +57,7 @@ $this->registerJsFile('@web/js/deleteArticle.js', ['depends' => 'yii\web\YiiAsse
                                 </form>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-danger btn-xs" id="deleteArticle">
+                                <button type="button" class="btn btn-danger btn-xs" id="deleteArticle<?php echo $header['id']; ?>">
                                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Удалить
                                 </button>
                             </td>

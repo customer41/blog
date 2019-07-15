@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\LoginForm;
+use app\models\MyUser;
 use Yii;
 
 class IndexController extends BaseController
@@ -33,6 +34,21 @@ class IndexController extends BaseController
     {
         Yii::$app->user->logout();
         return $this->goHome();
+    }
+
+    public function actionRegister()
+    {
+        $user = new MyUser;
+        if (Yii::$app->request->isPost) {
+            $data = Yii::$app->request->post('MyUser');
+            $data['password'] = Yii::$app->security->generatePasswordHash($data['password']);
+            $user->attributes = $data;
+            if ($user->save()) {
+                Yii::$app->user->logout();
+                $this->redirect('/index/login');
+            }
+        }
+        return $this->render('register', ['user' => $user]);
     }
 
     public function actions()

@@ -41,12 +41,10 @@ BootboxAsset::overrideSystemConfirm();
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Главная', 'url' => ['/index/default']],
-            Yii::$app->user->isGuest ? (
-            ['label' => 'Войти', 'url' => ['/index/login']]
-            ) : (
+            ['label' => 'Главная', 'url' => ['/']],
+            (
                 '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
+                . Html::beginForm(['/index/logout'], 'post')
                 . Html::submitButton(
                     'Выйти (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']

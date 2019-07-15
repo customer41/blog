@@ -8,10 +8,10 @@ class Article extends ArticleBase
 {
     public function attributeLabels()
     {
-        return [
-            'title' => 'Заголовок статьи',
-            'body' => 'Статья',
-        ];
+        $labels = parent::attributeLabels();
+        $labels['title'] = 'Заголовок статьи';
+        $labels['body'] = 'Статья';
+        return $labels;
     }
 
     public static function getAllHeaders()

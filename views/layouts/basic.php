@@ -38,17 +38,19 @@ BootboxAsset::overrideSystemConfirm();
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Главная', 'url' => ['/index/default']],
+            ['label' => 'Главная', 'url' => ['/']],
             ['label' => 'Статьи', 'url' => ['/articles/all']],
             ['label' => 'Администрация', 'url' => ['/admin']],
+            ['label' => 'Регистрация', 'url' => ['/index/register']],
             Yii::$app->user->isGuest ? (
             ['label' => 'Войти', 'url' => ['/index/login']]
             ) : (
                 '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
+                . Html::beginForm(['/index/logout'], 'post')
                 . Html::submitButton(
                     'Выйти (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']

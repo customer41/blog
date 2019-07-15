@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use \yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "users".
  *
@@ -13,8 +15,6 @@ namespace app\models;
  * @property string $accessToken
  * @property string $created
  */
-
-use \yii\db\ActiveRecord;
 
 class MyUserBase extends ActiveRecord
 {

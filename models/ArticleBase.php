@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use \yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "articles".
  *
@@ -10,8 +12,6 @@ namespace app\models;
  * @property string $body
  * @property string $created
  */
-
-use \yii\db\ActiveRecord;
 
 class ArticleBase extends ActiveRecord
 {

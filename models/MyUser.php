@@ -2,35 +2,11 @@
 
 namespace app\models;
 
-use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use Yii;
 
 class MyUser extends MyUserBase implements IdentityInterface
 {
-    public $rePassword;
-
-    public function rules()
-    {
-        return ArrayHelper::merge([
-            ['username', 'string', 'length' => [3, 20]],
-            ['password', 'string', 'length' => [6, 10]],
-            ['rePassword', 'required'],
-            ['email', 'email'],
-            ['rePassword', 'compare', 'compareAttribute' => 'password'],
-        ],
-            parent::rules());
-    }
-
-    public function attributeLabels()
-    {
-        $labels = parent::attributeLabels();
-        $labels['username'] = 'Имя пользователя';
-        $labels['password'] = 'Пароль';
-        $labels['rePassword'] = 'Повтор пароля';
-        return $labels;
-    }
-
     public static function findIdentity($id)
     {
         return MyUser::findOne(['id' => $id]);

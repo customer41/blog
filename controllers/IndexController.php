@@ -3,8 +3,10 @@
 namespace app\controllers;
 
 use app\models\LoginForm;
-use app\models\MyUser;
+use app\models\RegisterForm;
 use Yii;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 class IndexController extends BaseController
 {
@@ -38,17 +40,19 @@ class IndexController extends BaseController
 
     public function actionRegister()
     {
-        $user = new MyUser;
-        if (Yii::$app->request->isPost) {
-            $data = Yii::$app->request->post('MyUser');
-            $data['password'] = Yii::$app->security->generatePasswordHash($data['password']);
-            $user->attributes = $data;
-            if ($user->save()) {
+        $model = new RegisterForm;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            if (!Yii::$app->user->isGuest) {
                 Yii::$app->user->logout();
-                $this->redirect('/index/login');
+            }
+            if ($model->register()) {
+                Yii::$app->session->setFlash(
+                    'success',
+                    'Вы успешно зарегистрировались. Пройдите ' . Html::a('авторизацию', Url::to('/index/login'))
+                );
             }
         }
-        return $this->render('register', ['user' => $user]);
+        return $this->render('register', ['model' => $model]);
     }
 
     public function actions()

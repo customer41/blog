@@ -11,9 +11,7 @@ $this->params['breadcrumbs'][] = 'Авторизация';
 ?>
 <div class="site-login">
     <h1>Авторизация</h1>
-
     <p>Пожалуйста заполните следующие поля:</p>
-
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
@@ -22,20 +20,15 @@ $this->params['breadcrumbs'][] = 'Авторизация';
             'labelOptions' => ['class' => 'col-lg-1 control-label'],
         ],
     ]); ?>
-
     <?= $form->field($model, 'username')->textInput() ?>
-
     <?= $form->field($model, 'password')->passwordInput() ?>
-
     <?= $form->field($model, 'rememberMe')->checkbox([
         'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
     ]) ?>
-
     <div class="form-group">
         <div class="col-lg-offset-1 col-lg-11">
             <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
         </div>
     </div>
-
     <?php ActiveForm::end(); ?>
 </div>

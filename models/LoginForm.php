@@ -48,7 +48,7 @@ class LoginForm extends Model
             $user = $this->getUser();
 
             if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Неверный логин или пароль.');
+                $this->addError($attribute, 'Неверный email или пароль.');
             }
         }
     }
@@ -77,7 +77,7 @@ class LoginForm extends Model
                 $this->_user = User::findByUsername($this->username);
             }
         } else {
-            $this->_user = MyUser::findOne(['username' => $this->username]);
+            $this->_user = MyUser::findOne(['email' => $this->username]);
         }
         return $this->_user;
     }
@@ -96,7 +96,7 @@ class LoginForm extends Model
             return parent::attributeLabels();
         } else {
             return [
-                'username' => 'Логин',
+                'username' => 'E-mail',
                 'password' => 'Пароль',
                 'rememberMe' => 'Запомнить меня',
             ];

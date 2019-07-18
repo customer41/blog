@@ -7,6 +7,11 @@ use Yii;
 
 class MyUser extends MyUserBase implements IdentityInterface
 {
+    public function getComments()
+    {
+        return $this->hasMany(Comment::class, ['user_id' => 'id']);
+    }
+
     public static function findIdentity($id)
     {
         return MyUser::findOne(['id' => $id]);

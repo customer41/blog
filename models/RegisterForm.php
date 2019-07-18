@@ -35,7 +35,8 @@ class RegisterForm extends Model
     {
         return [
             [['username', 'email', 'password', 'rePassword'], 'required'],
-            ['username', 'string', 'length' => [3, 20]],
+            ['username', 'string', 'length' => [4, 20]],
+            ['username', 'match', 'pattern' => '~^([a-z]+|[а-яё]+)$~iu', 'message' => 'Используйте только латинские или русские буквы'],
             ['email', 'email'],
             [['password', 'rePassword'], 'string', 'length' => [6, 10]],
             ['rePassword', 'compare', 'compareAttribute' => 'password'],

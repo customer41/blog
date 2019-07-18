@@ -6,6 +6,11 @@ use yii\db\Query;
 
 class Article extends ArticleBase
 {
+    public function getComments()
+    {
+        return $this->hasMany(Comment::class, ['article_id' => 'id']);
+    }
+
     public function attributeLabels()
     {
         $labels = parent::attributeLabels();

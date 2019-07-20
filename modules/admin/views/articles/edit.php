@@ -5,9 +5,9 @@
  * @var $article app\models\Article
  */
 
-use \yii\bootstrap\ActiveForm;
-use \yii\helpers\Html;
-use \mihaildev\ckeditor\CKEditor;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+use mihaildev\ckeditor\CKEditor;
 
 $this->params['breadcrumbs'][] = ['label' => 'Админ-панель', 'url' => '/admin'];
 $this->params['breadcrumbs'][] = ['label' => 'Статьи', 'url' => '/admin'];

@@ -43,8 +43,8 @@ BootboxAsset::overrideSystemConfirm();
         'items' => [
             ['label' => 'Главная', 'url' => ['/']],
             ['label' => 'Статьи', 'url' => ['/articles/all']],
-            ['label' => 'Администрация', 'url' => ['/admin']],
-            ['label' => 'Регистрация', 'url' => ['/index/register']],
+            ['label' => 'Администрация', 'url' => ['/admin'], 'visible' => Yii::$app->user->identity->username === 'Admin'],
+            ['label' => 'Регистрация', 'url' => ['/index/register'], 'visible' => Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
             ['label' => 'Войти', 'url' => ['/index/login']]
             ) : (
@@ -70,10 +70,10 @@ BootboxAsset::overrideSystemConfirm();
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer centerVertical">
     <div class="container">
-        <p class="text-center">&copy; Блог Александра Попова <?= date('Y') ?></p>
-        <p class="text-center">
+        <p>&copy; Блог Александра Попова <?= date('Y') ?></p>
+        <p>
             Сайт носит исключительно информационно-развлекательный характер,
             описывает личный опыт автора и не является инструкцией к действиям
         </p>

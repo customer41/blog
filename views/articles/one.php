@@ -34,3 +34,7 @@ $this->params['breadcrumbs'][] = 'Статья';
         </div>
     </div>
 </article>
+
+<section>
+    <?php echo Yii::$app->runAction('comments/add'); ?>
+</section>
